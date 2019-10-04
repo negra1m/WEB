@@ -8,50 +8,7 @@ html {
 	justify-content: center;
 	align-content: center;
 }
-input {
-	border: none;
-	border-radius: 2px;
-	height: 50px;
-	width: 400px;
-	text-align: center;
-	border-bottom: 1px solid #666;
-	position: fixed;
-	top: 2em;
-	left: 1em;
-	font-size: 20px;
-	outline: none;
-}
-textarea {
-	font-family: 'Cedarville Cursive', cursive;
-	outline: none;
-	width: 100%;
-	max-width: 80vw;
-	height: 50vh;
-	max-height: 50vh;
-	margin-bottom: 30px;
-	border: none;
-	border-radius: 3px;
-	line-height: 31px;
-	background-size: 100% 100%, 100% 100%, 100% 31px;
-	background-image: -webkit-linear-gradient(left, white 10px, transparent 10px),
-		-webkit-linear-gradient(right, white 10px, transparent 10px),
-		-webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
-	background-image: -moz-linear-gradient(left, white 10px, transparent 10px),
-		-moz-linear-gradient(right, white 10px, transparent 10px),
-		-moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
-	background-image: -ms-linear-gradient(left, white 10px, transparent 10px),
-		-ms-linear-gradient(right, white 10px, transparent 10px),
-		-ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
-	background-image: -o-linear-gradient(left, white 10px, transparent 10px),
-		-o-linear-gradient(right, white 10px, transparent 10px),
-		-o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
-	background-image: linear-gradient(left, white 10px, transparent 10px),
-		linear-gradient(right, white 10px, transparent 10px),
-		linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
-	background-size: 100% 100%, 100% 100%, 100% 31px;
-	padding: 1em 0em 0em 1em;
-	font-size: 30px;
-}
+
 .content {
 	display: flex;
 	justify-content: space-around;
@@ -73,7 +30,6 @@ textarea {
 	font-size: 16px;
 	width: 200px;
 	height: 50px;
-	font-family: 'Mansalva', cursive;
 	outline: none;
 	-webkit-box-shadow: 10px 10px 22px 1px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 10px 10px 22px 1px rgba(0, 0, 0, 0.75);
@@ -87,11 +43,16 @@ textarea {
 	border-radius: 0px;
 	box-shadow: none;
 	transition: all 1s;
-	animation: shadow-drop-2-center 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-		infinite alternate;
+	animation: roll-out-blurred-right 3s cubic-bezier(0.755, 0.05, 0.855, 0.06)
+		both;
 }
 
 .lines {
+	position: absolute;
+	width: 70px;
+	height: 50px;
+	opacity: 0;
+	transition: opacity 1s;
 	background-image: -webkit-linear-gradient(
 			-235.5deg,
 			rgba(0, 0, 0, 0) 0%,
@@ -116,6 +77,11 @@ textarea {
 					52%, rgba(0, 0, 0, 0) 100%);
 }
 
+.show {
+	opacity: 1;
+	z-index: 1;
+}
+
 .btn-send {
 	background-color: rgb(255, 153, 0);
 	color: #fff;
@@ -129,18 +95,19 @@ textarea {
 	align-self: center;
 	justify-self: center;
 }
-
-@keyframes shadow-drop-2-center {
+@keyframes roll-out-blurred-right {
 	0% {
-		-webkit-transform: translateZ(0);
-		transform: translateZ(0);
-		-webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+		-webkit-transform: translateX(0) rotate(0deg);
+		transform: translateX(0) rotate(0deg);
+		-webkit-filter: blur(0);
+		filter: blur(0);
+		display: block;
 	}
 	100% {
-		-webkit-transform: translateZ(50px);
-		transform: translateZ(50px);
-		-webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-		box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+		-webkit-transform: translateX(1000px) rotate(720deg);
+		transform: translateX(1000px) rotate(720deg);
+		-webkit-filter: blur(50px);
+		filter: blur(50px);
+		display: none;
 	}
 }
