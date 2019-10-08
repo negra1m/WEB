@@ -1,4 +1,49 @@
 html {
+	height: 100vh;
+	margin: 0 0;
+	background-size: cover;
+}
+
+body {
 	margin: 0 0;
 	padding: 0 0;
+}
+
+.header {
+	display: flex;
+	background-image: linear-gradient(
+			90deg,
+			rgba(0, 0, 0, 0.8687850140056023) 0%,
+			rgba(14, 14, 14, 0.7959558823529411) 50%,
+			rgba(0, 0, 0, 0.7959558823529411) 100%
+		),
+		url(../assets/images/header_background.jpg);
+	background-size: cover;
+	height: 22em;
+}
+
+.header > .image {
+	flex: 1;
+	background-color: #666;
+	align-self: center;
+	height: 30px;
+	width: auto;
+	margin: 0 0 0 2em;
+}
+
+.header > .content {
+	flex: 2;
+	color: #eee;
+	letter-spacing: 2px;
+}
+
+.content > .title {
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 5em;
+}
+
+.content > .description {
+	font-size: 14px;
+	text-align: center;
 }
